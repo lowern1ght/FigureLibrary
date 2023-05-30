@@ -11,6 +11,6 @@ public class Circle : IRound
     
     public Double GetArea()
     {
-        return Math.PI * (this.Radius * this.Radius);
+        return Math.PI * Math.Pow(Radius, 2);
     }
 }

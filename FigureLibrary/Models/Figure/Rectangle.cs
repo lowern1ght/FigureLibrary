@@ -7,12 +7,9 @@ public class Rectangle : IFigure
 
     public Rectangle(Double firstSite, Double secondSite)
     {
-        this.A = firstSite;
-        this.B = secondSite;
+         A = firstSite; B = secondSite;
     }
     
-    public Double GetArea()
-    {
-        return this.A * this.B;
-    }
+    public Double GetArea() 
+        => A * B;
 }
