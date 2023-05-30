@@ -1,4 +1,4 @@
-﻿namespace FigureService.Models.Figure;
+﻿namespace FigureLibrary.Models.Figure;
 
 public class Square : IFigure
 {
@@ -6,11 +6,11 @@ public class Square : IFigure
 
     public Square(Double firstSite)
     {
-        A = firstSite;
+        this.A = firstSite;
     }
     
     public Double GetArea()
     {
-        return A * A;
+        return this.A * this.A;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FigureService.Models; 
+﻿namespace FigureLibrary.Models; 
 
 public interface IFigure 
 {

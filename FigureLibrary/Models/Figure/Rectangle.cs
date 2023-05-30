@@ -1,4 +1,4 @@
-﻿namespace FigureService.Models.Figure; 
+﻿namespace FigureLibrary.Models.Figure; 
 
 public class Rectangle : IFigure
 {
@@ -7,12 +7,12 @@ public class Rectangle : IFigure
 
     public Rectangle(Double firstSite, Double secondSite)
     {
-        A = firstSite;
-        B = secondSite;
+        this.A = firstSite;
+        this.B = secondSite;
     }
     
     public Double GetArea()
     {
-        return A * B;
+        return this.A * this.B;
     }
 }

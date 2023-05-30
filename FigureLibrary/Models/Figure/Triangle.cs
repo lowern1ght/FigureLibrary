@@ -1,4 +1,4 @@
-﻿namespace FigureService.Models.Figure;
+﻿namespace FigureLibrary.Models.Figure;
 
 public class Triangle : ITriangle
 {
@@ -8,26 +8,26 @@ public class Triangle : ITriangle
 
     public Triangle(Double firstSite, Double secondSite, Double thirdSite)
     {
-        A = firstSite;
-        B = secondSite;
-        C = thirdSite;
+        this.A = firstSite;
+        this.B = secondSite;
+        this.C = thirdSite;
     }
     
     public Boolean IsRectangular()
     {
-        return (A * A) == (B * B) + (C * C) ||
-               (B * B) == (A * A) + (C * C) ||
-               (C * C) == (B * B) + (A * A);
+        return (this.A * this.A) == (this.B * this.B) + (this.C * this.C) ||
+               (this.B * this.B) == (this.A * this.A) + (this.C * this.C) ||
+               (this.C * this.C) == (this.B * this.B) + (this.A * this.A);
     }
 
     public Double GetSemiPerimeter()
     {
-        return (A + B + C) / 2;
+        return (this.A + this.B + this.C) / 2;
     }
 
     public Double GetArea()
     {
         var P = GetSemiPerimeter();
-        return Math.Sqrt(P * (P - A) * (P - B) * (P - C));
+        return Math.Sqrt(P * (P - this.A) * (P - this.B) * (P - this.C));
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FigureService.Models.Figure;
+﻿namespace FigureLibrary.Models.Figure;
 
 public class Circle : IRound
 {
@@ -6,11 +6,11 @@ public class Circle : IRound
 
     public Circle(Double radius)
     {
-        Radius = radius;
+        this.Radius = radius;
     }
     
     public Double GetArea()
     {
-        return Math.PI * (Radius * Radius);
+        return Math.PI * (this.Radius * this.Radius);
     }
 }
