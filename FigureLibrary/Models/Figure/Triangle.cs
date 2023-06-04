@@ -1,4 +1,6 @@
-﻿namespace FigureLibrary.Models.Figure;
+﻿using FigureLibrary.Models.Interfaces;
+
+namespace FigureLibrary.Models.Figure;
 
 public class Triangle : ITriangle
 {
