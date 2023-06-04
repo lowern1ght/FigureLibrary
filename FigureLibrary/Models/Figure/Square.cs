@@ -6,11 +6,11 @@ public class Square : IFigure
 {
     public Double A { get; init; }
 
-    public Square(Double firstSite)
+    public Square(Double side)
     {
-        if (firstSite > 0)
+        if (side > 0)
         {
-            this.A = firstSite;
+            this.A = side;
         }
         else { throw new ArgumentException("Argument must be greater than zero"); }
     }
