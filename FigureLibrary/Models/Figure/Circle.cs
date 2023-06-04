@@ -12,7 +12,7 @@ public class Circle : IRound
         {
             this.Radius = radius;
         }
-        else { throw new ArgumentNullException(); }
+        else { throw new ArgumentException("Radius must be greater than zero"); }
     }
     
     public Double GetArea()

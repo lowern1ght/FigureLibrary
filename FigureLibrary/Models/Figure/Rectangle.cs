@@ -13,7 +13,7 @@ public class Rectangle : IFigure
         {
             A = firstSite; B = secondSite;
         }
-        else { throw new ArgumentNullException(); }
+        else { throw new ArgumentException("Argument('s) must be greater than zero"); }
     }
     
     public Double GetArea() 

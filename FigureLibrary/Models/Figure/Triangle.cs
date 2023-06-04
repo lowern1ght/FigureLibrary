@@ -7,29 +7,34 @@ public class Triangle : ITriangle
     public double A { get; init; }
     public double B { get; init; }
     public double C { get; init; }
-
+    
+    /// <param name="firstSite">first side of triangle</param>
+    /// <param name="secondSite">second side of triangle</param>
+    /// <param name="thirdSite">third side of triangle</param>
+    /// <exception cref="ArgumentException">if side('s) is less than 0 or equal to 0</exception>
     public Triangle(Double firstSite, Double secondSite, Double thirdSite)
     {
         if (firstSite > 0 && secondSite > 0 && thirdSite > 0)
         {
             A = firstSite; B = secondSite; C = thirdSite;
         }
-        else { throw new ArgumentNullException(); }
+        else { throw new ArgumentException("Argument('s) must be greater than zero"); }
     }
 
     public Boolean IsRectangular()
     {
-        return (A * A) == (B * B) + (C * C) ||
-               (B * B) == (A * A) + (C * C) ||
-               (C * C) == (B * B) + (A * A);
+        return Math.Round(A * A, 2) == Math.Round(B * B, 2) + Math.Round(C * C, 2) ||
+               Math.Round(B * B, 2) == Math.Round(A * A, 2) + Math.Round(C * C, 2) ||
+               Math.Round(C * C, 2) == Math.Round(B * B, 2) + Math.Round(A * A, 2);
     }
     
+    /// <returns>get semi-perimeter this triangle</returns>
     public Double GetSemiPerimeter()
-        => Math.Round((A + B + C) / 2, 2);
+        => (A + B + C) / 2;
     
     public Double GetArea()
     {
-        var p = GetSemiPerimeter();
-        return Math.Round(Math.Sqrt(p * (p - this.A) * (p - this.B) * (p - this.C)), 2);
+        var semiPerimeter = GetSemiPerimeter();
+        return Math.Sqrt(semiPerimeter * (semiPerimeter - A) * (semiPerimeter - B) * (semiPerimeter - C));
     }
 }

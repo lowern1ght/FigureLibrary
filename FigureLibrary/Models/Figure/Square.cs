@@ -12,7 +12,7 @@ public class Square : IFigure
         {
             this.A = firstSite;
         }
-        else { throw new ArgumentNullException(); }
+        else { throw new ArgumentException("Argument must be greater than zero"); }
     }
 
     public Double GetArea() 
