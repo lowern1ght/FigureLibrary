@@ -6,7 +6,11 @@ public class Circle : IRound
 
     public Circle(Double radius)
     {
-        this.Radius = radius;
+        if (radius > 0)
+        {
+            this.Radius = radius;
+        }
+        else { throw new ArgumentNullException(); }
     }
     
     public Double GetArea()

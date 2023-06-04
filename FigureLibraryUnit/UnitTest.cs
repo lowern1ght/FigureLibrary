@@ -14,6 +14,9 @@ public class UnitTest1
     {
         var square = new Square(8);
         Assert.Equal(Math.Pow(8, 2), square.GetArea());
+
+        Assert.Throws<ArgumentNullException>(() 
+            => new Square(0));
     }
     
     [Fact]
@@ -24,6 +27,9 @@ public class UnitTest1
         Assert.True(triangle.IsRectangular());
         Assert.Equal(4.2, triangle.GetSemiPerimeter());
         Assert.Equal(2.94, triangle.GetArea());
+
+        Assert.Throws<ArgumentNullException>(() 
+            => new Triangle(0.1, 0, 1));
     }
     
     [Fact]

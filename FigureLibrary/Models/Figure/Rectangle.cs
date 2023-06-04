@@ -7,7 +7,11 @@ public class Rectangle : IFigure
 
     public Rectangle(Double firstSite, Double secondSite)
     {
-         A = firstSite; B = secondSite;
+        if (firstSite > 0 && secondSite > 0)
+        {
+            A = firstSite; B = secondSite;
+        }
+        else { throw new ArgumentNullException(); }
     }
     
     public Double GetArea() 

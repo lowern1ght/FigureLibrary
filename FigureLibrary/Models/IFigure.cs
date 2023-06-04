@@ -1,6 +1,6 @@
 ﻿namespace FigureLibrary.Models; 
 
-public interface IFigure 
+public interface IFigure
 {
     public Double GetArea();
 }
