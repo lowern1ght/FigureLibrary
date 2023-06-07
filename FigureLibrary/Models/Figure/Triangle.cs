@@ -19,6 +19,13 @@ public class Triangle : ITriangle
             A = firstSite; B = secondSite; C = thirdSite;
         }
         else { throw new ArgumentException("Argument('s) must be greater than zero"); }
+
+        if (firstSite + secondSite > thirdSite ||
+            secondSite + thirdSite > firstSite ||
+            firstSite + thirdSite > secondSite)
+        {
+            throw new ArgumentException("Side cannot be greater than the sum of the other two");
+        }
     }
 
     public Boolean IsRectangular()

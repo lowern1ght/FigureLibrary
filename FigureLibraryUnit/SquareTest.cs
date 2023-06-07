@@ -17,6 +17,7 @@ public class SquareTest
     [InlineData(4, 16)]
     [InlineData(8, 64)]
     [InlineData(12, 144)]
+    [InlineData(12.82, 164.3524)]
     //Verification source - windows calculator
     public void TestGetAreaMethod(Double side, Double res)
     {
