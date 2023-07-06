@@ -1,10 +1,8 @@
-﻿using FigureLibrary.Models.Interfaces;
+﻿namespace FigureLibrary.Models.Figure;
 
-namespace FigureLibrary.Models.Figure;
-
-public class Square : IFigure
+public class Square : Figure
 {
-    public Double A { get; init; }
+    private Double A { get; init; }
 
     public Square(Double side)
     {
@@ -15,6 +13,6 @@ public class Square : IFigure
         else { throw new ArgumentException("Argument must be greater than zero"); }
     }
 
-    public Double GetArea() 
+    public override Double GetArea()
         => Math.Pow(A, 2);
 }

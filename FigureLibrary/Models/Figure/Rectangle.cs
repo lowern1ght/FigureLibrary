@@ -2,10 +2,10 @@
 
 namespace FigureLibrary.Models.Figure; 
 
-public class Rectangle : IFigure
+public class Rectangle : Figure
 {
-    public Double A { get; init; }
-    public Double B { get; init; }
+    private Double A { get; init; }
+    private Double B { get; init; }
 
     public Rectangle(Double firstSite, Double secondSite)
     {
@@ -16,6 +16,6 @@ public class Rectangle : IFigure
         else { throw new ArgumentException("Argument('s) must be greater than zero"); }
     }
     
-    public Double GetArea() 
+    public override Double GetArea() 
         => A * B;
 }

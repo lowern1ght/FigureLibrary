@@ -2,7 +2,7 @@
 
 namespace FigureLibrary.Models.Figure;
 
-public class Triangle : ITriangle
+public class Triangle : Figure, ITriangle
 {
     public double A { get; init; }
     public double B { get; init; }
@@ -36,10 +36,10 @@ public class Triangle : ITriangle
     }
     
     /// <returns>get semi-perimeter this triangle</returns>
-    public Double GetSemiPerimeter()
+    private Double GetSemiPerimeter()
         => (A + B + C) / 2;
     
-    public Double GetArea()
+    public override Double GetArea()
     {
         var semiPerimeter = GetSemiPerimeter();
         return Math.Sqrt(semiPerimeter * (semiPerimeter - A) * (semiPerimeter - B) * (semiPerimeter - C));
