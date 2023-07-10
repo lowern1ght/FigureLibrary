@@ -2,7 +2,7 @@
 
 namespace FigureLibrary.Models.Figure;
 
-public class Circle : Figure, IRound
+public class Circle : IRound
 {
     public Double Radius { get; init; }
 
@@ -15,7 +15,7 @@ public class Circle : Figure, IRound
         else { throw new ArgumentException("Radius must be greater than zero"); }
     }
     
-    public override Double GetArea()
+    public Double GetArea()
     {
         return Math.PI * Math.Pow(Radius, 2);
     }
