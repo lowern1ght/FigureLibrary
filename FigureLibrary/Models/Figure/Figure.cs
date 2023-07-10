@@ -5,5 +5,5 @@ namespace FigureLibrary.Models.Figure;
 public abstract class Figure : IFigure
 {
     public virtual double GetArea()
-        => throw new NotImplementedException();
+        => Double.MinValue;
 }
