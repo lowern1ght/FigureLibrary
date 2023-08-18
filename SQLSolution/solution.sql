@@ -21,7 +21,7 @@ VALUES
     (1, 1, 'dobrii molochnik'),
     (2, 3, 'nike bag'),
     (3, 3, 'adidas bag'),
-    (4, null, 'pivo'),
+    (4, null, 'uygyrt'),
     (5, null, 'yslyga');
 
 SELECT 
