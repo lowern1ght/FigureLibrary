@@ -1,3 +1,5 @@
+using FigureLibrary.Exceptions;
+
 namespace FigureUnit;
 
 public class CircleTest
@@ -6,21 +8,21 @@ public class CircleTest
     [InlineData(2)]
     [InlineData(3)]
     [InlineData(8)]
-    public void TestArea(Double radius)
+    public void TestArea(double radius)
     {
         var circle = new Circle(radius);
-        Assert.Equal(CircleArea(ref radius), circle.Area());
+        Assert.Equal(CircleArea(ref radius), circle.Area);
     }
 
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public void TestExceptionArgument(Double radius)
+    public void TestExceptionArgument(double radius)
     {
-        Assert.Throws<ArgumentException>(() => new Circle(radius));
+        Assert.Throws<SideInitializationException>(() => new Circle(radius));
     }
-    
-    private Double CircleArea(ref Double radius)
+
+    private double CircleArea(ref double radius)
     {
         return Math.PI * Math.Pow(radius, 2);
     }
