@@ -1,13 +1,14 @@
-﻿using static System.Math;
+﻿using FigureLibrary.Exceptions;
+using FigureLibrary.Helper;
 using FigureLibrary.Interfaces;
+using static System.Math;
 
 namespace FigureLibrary;
 
-public readonly struct Triangle : IFigure
+public class Triangle : IFigure
 {
-    private readonly double _side1;
-    private readonly double _side2;
-    private readonly double _side3;
+    private readonly double _side1, _side2, _side3;
+
 
     /// <summary>
     ///     Create a new triangle
@@ -15,45 +16,42 @@ public readonly struct Triangle : IFigure
     /// <param name="side1">first side</param>
     /// <param name="side2">second side</param>
     /// <param name="side3">third side</param>
-    /// <exception cref="ArgumentException">if one side equal 0</exception>
+    /// <exception cref="SideInitializationException">if one side equal 0</exception>
     public Triangle(double side1, double side2, double side3)
     {
-        if (side1 <= 0.0)
-        {
-            throw new ArgumentException(nameof(side1));
-        }
-        
-        if (side2 <= 0.0)
-        {
-            throw new ArgumentException(nameof(side2));
-        }
-        
-        if (side3 <= 0.0)
-        {
-            throw new ArgumentException(nameof(side3));
-        }
-        
+        FigureHelper.SidesIsValidateThrow(side1, side2, side3);
+
         _side1 = side1;
         _side2 = side2;
         _side3 = side3;
-    }
-    
-    public double HalfPerimeter()
-        => (_side1 + _side2 + _side3) / 2;
 
-    public Boolean IsRectangular()
-    {
+        #region HalfPerimeter
+
+        HalfPerimeter = (_side1 + _side2 + _side3) / 2;
+
+        #endregion
+
+        #region IsRectangular
+
         double[] array = { _side1, _side2, _side3 };
         Array.Sort(array);
 
-        return Pow(array[0], 2) + Pow(array[1], 2) == Pow(array[2], 2);
+        IsRectangular = Abs(Pow(array[0], 2) + Pow(array[1], 2) - Pow(array[2], 2)) < FigureHelper.Tolerance;
+
+        #endregion
+
+        #region Area
+
+        Area = Sqrt(HalfPerimeter * (HalfPerimeter - _side1)
+                                  * (HalfPerimeter - _side2)
+                                  * (HalfPerimeter - _side3));
+
+        #endregion
     }
-    
-    public double Area()
-    {
-        var halfPerimeter = HalfPerimeter();
-        return Sqrt(halfPerimeter * (halfPerimeter - _side1) 
-                                  * (halfPerimeter - _side2) 
-                                  * (halfPerimeter - _side3));
-    }
+
+    public double HalfPerimeter { get; }
+
+    public bool IsRectangular { get; }
+
+    public double Area { get; init; }
 }

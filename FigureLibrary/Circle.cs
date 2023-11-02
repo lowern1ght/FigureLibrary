@@ -1,27 +1,30 @@
-﻿using FigureLibrary.Interfaces;
+﻿using FigureLibrary.Exceptions;
+using FigureLibrary.Helper;
+using FigureLibrary.Interfaces;
+using static System.Math;
 
 namespace FigureLibrary;
 
-public readonly struct Circle : IFigure
+public class Circle : IFigure
 {
-    private readonly Double _radius;
+    private readonly double _radius;
 
     /// <summary>
-    ///     Create new Circle struct
+    ///     Create new Circle
     /// </summary>
-    /// <exception cref="ArgumentException">if radius is null</exception>
+    /// <exception cref="SideInitializationException">if radius is null or less null</exception>
     public Circle(double radius)
     {
-        if (radius <= 0.0)
-        {
-            throw new ArgumentException(nameof(radius));
-        }
-        
+        FigureHelper.SidesIsValidateThrow(radius);
+
         _radius = radius;
+
+        #region Area
+
+        Area = PI * Pow(_radius, 2);
+
+        #endregion
     }
-    
-    public double Area()
-    {
-        return Math.PI * Math.Pow(_radius, 2);
-    }
+
+    public double Area { get; init; }
 }
