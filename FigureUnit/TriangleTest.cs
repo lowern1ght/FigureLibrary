@@ -1,9 +1,17 @@
 ﻿using FigureLibrary.Exceptions;
+using Xunit.Abstractions;
 
 namespace FigureUnit;
 
 public class TriangleTest
 {
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public TriangleTest(ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
     [Theory]
     [InlineData(11, 12, 13)]
     public void TestArea(double side1, double side2, double side3)
@@ -36,5 +44,18 @@ public class TriangleTest
         return Math.Sqrt(semiPerimeter * (semiPerimeter - side1)
                                        * (semiPerimeter - side2)
                                        * (semiPerimeter - side3));
+    }
+
+    [Theory]
+    [InlineData(33.6, 33.3, 3.3)]
+    [InlineData(66.6, 3.3, 33.3)]
+    [InlineData(33.6, 3.3, 33.3)]
+    public void TriangleAreaNaNCheck(double side1, double side2, double side3)
+    {
+        var area = new Triangle(side1, side2, side3).Area;
+
+        _testOutputHelper.WriteLine($"Area: {area}");
+
+        Assert.False(double.IsNaN(area));
     }
 }
