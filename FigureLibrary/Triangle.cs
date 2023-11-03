@@ -9,7 +9,6 @@ public class Triangle : IFigure
 {
     private readonly double _side1, _side2, _side3;
 
-
     /// <summary>
     ///     Create a new triangle
     /// </summary>
@@ -17,6 +16,7 @@ public class Triangle : IFigure
     /// <param name="side2">second side</param>
     /// <param name="side3">third side</param>
     /// <exception cref="SideInitializationException">if one side equal 0</exception>
+    /// <exception cref="NotANumberException">if area is NaN</exception>
     public Triangle(double side1, double side2, double side3)
     {
         FigureHelper.SidesIsValidateThrow(side1, side2, side3);
@@ -33,18 +33,25 @@ public class Triangle : IFigure
 
         #region IsRectangular
 
-        double[] array = { _side1, _side2, _side3 };
-        Array.Sort(array);
+        double[] sides = { _side1, _side2, _side3 };
+        Array.Sort(sides);
 
-        IsRectangular = Abs(Pow(array[0], 2) + Pow(array[1], 2) - Pow(array[2], 2)) < FigureHelper.Tolerance;
+        IsRectangular = Abs(Pow(sides[0], 2) + Pow(sides[1], 2) - Pow(sides[2], 2)) < FigureHelper.Tolerance;
 
         #endregion
 
         #region Area
 
-        Area = Sqrt(HalfPerimeter * (HalfPerimeter - _side1)
-                                  * (HalfPerimeter - _side2)
-                                  * (HalfPerimeter - _side3));
+        (side1, side2, side3) = (sides[0], sides[1], sides[2]);
+
+        Area = Sqrt(HalfPerimeter * (HalfPerimeter - side1)
+                                  * (HalfPerimeter - side2)
+                                  * (HalfPerimeter - side3));
+
+        if (double.IsNaN(Area))
+        {
+            throw new NotANumberException();
+        }
 
         #endregion
     }
